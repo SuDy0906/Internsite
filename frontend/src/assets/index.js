@@ -28,6 +28,7 @@ import process2 from "./process2.png";
 import process3 from "./process3.png";
 import process4 from "./process4.png";
 import xcel from "./xcel.png";
+import arrowup from "./arrowUp.svg"
 
 export {
   airbnb,
@@ -59,5 +60,6 @@ export {
   process2,
   process3,
   process4,
-  xcel
+  xcel,
+  arrowup
 };

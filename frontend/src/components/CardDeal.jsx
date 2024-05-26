@@ -6,19 +6,18 @@ const CardDeal = () => (
   <section className={layout.section}>
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
-        Find a better card deal <br className="sm:block hidden" /> in few easy
-        steps.
+        About Us <br className="sm:block hidden" /> Smart strategies for wealth creation
       </h2>
       <p className={`${styles.paragraph} max-w-[470px] mt-5`}>
-        Arcu tortor, purus in mattis at sed integer faucibus. Aliquet quis
-        aliquet eget mauris tortor.ç Aliquet ultrices ac, ametau.
+      XCELMINS stands as an advanced AI investment platform, specializing in index and cash market trading. Our clients enjoy the flexibility to customize strategies daily or weekly, aligning with their risk preferences. Equipped with cutting-edge tools and insightful analytics, we empower decision-making by eliminating emotional biases. 
+      <br/> XCELMINS: Your dedicated partner in navigating financial success.
       </p>
 
-      <Button styles={`mt-10`} />
+      {/* <Button styles={`mt-10`} /> */}
     </div>
 
     <div className={layout.sectionImg}>
-      <img src={card} alt="billing" className="w-[100%] h-[100%]" />
+      <img src={card} alt="billing" className="w-[100%] h-[80%]" />
     </div>
   </section>
 );
