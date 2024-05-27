@@ -1,10 +1,10 @@
 import styles from "./style";
-import { Billing, Business, CardDeal, Clients, CTA, Footer, Navbar, Stats, Testimonials, Hero, Plans} from "./components";
+import { Billing, Business, CardDeal, Clients, CTA, Footer, Navbar, Stats, Testimonials, Hero, Plans, Contact, Testi, Purchase} from "./components";
 
 const App = () => (
   <div className="bg-white w-full overflow-hidden">
     <div className={`${styles.flexCenter}`}>
-      <div className={`${styles.boxWidth}`}>
+      <div className={`${styles.boxWidth}` }>
         <Navbar />
       </div>
     </div>
@@ -24,9 +24,14 @@ const App = () => (
         <Billing />
         
         <Plans/>
+        
         <Testimonials />
-        <Clients />
+        
+        
         <CTA />
+        <Purchase/>
+        {/* <Clients /> */}
+        <Contact/>
         <Footer />
       </div>
     </div>

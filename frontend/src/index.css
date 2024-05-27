@@ -18,6 +18,10 @@
   scroll-behavior: smooth;
 }
 
+.plantitle {
+  font-family: monospace;
+  font-size: xx-large;
+}
 .text-gradient {
   background: linear-gradient(
     157.81deg,

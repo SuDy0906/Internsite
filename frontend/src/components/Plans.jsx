@@ -1,124 +1,105 @@
 // import { plans } from "../constants";
 import styles, { layout } from "../style";
 import Button from "./Button";
-
+import "../table.css"
 const Planstable = ({ icon, title, content, index }) => (
-  
-
-<div className="relative overflow-x-auto shadow-md sm:rounded-lg flex justify-center items-center">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    WOLF
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    EAGLE
-                </th>
-                
-                
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Product details
-                </th>
-                <td class="px-6 py-4">
-                Xcelmins WOLF is a smart plan designed for individuals who want to have initial experience of systematic investing…
-                </td>
-                <td class="px-6 py-4">
-                Xcelmins EAGLE includes multiple engines/avenues for finding investment opportunities across various segments. Eagle has more advance tools which help you to accelerate compounding during favorable environment
-                </td>
-                
-                
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Capital Required
-                </th>
-                <td class="px-6 py-4">
-                    10 Lacs
-                </td>
-                <td class="px-6 py-4">
-                    25 Lacs
-                </td>
-                
-                
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Professional Support
-                </th>
-                <td class="px-6 py-4">
-                    Yes
-                </td>
-                <td class="px-6 py-4">
-                    Yes
-                </td>
-               
-            
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Formal Dashboard
-                </th>
-                <td class="px-6 py-4">
-                    No
-                </td>
-                <td class="px-6 py-4">
-                    Yes
-                </td>
-               
-            
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    No. of Strategies
-                </th>
-                <td class="px-6 py-4">
-                    3
-                </td>
-                <td class="px-6 py-4">
-                    4
-                </td>
-               
-            
-            </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Segments
-                </th>
-                <td class="px-6 py-4">
-                    Limited
-                </td>
-                <td class="px-6 py-4">
-                    Multiple
-                </td>
-               
-            
-            </tr>
-            <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Xcelmins Booster
-                </th>
-                <td class="px-6 py-4">
-                    No
-                </td>
-                <td class="px-6 py-4">
-                    Yes
-                </td>
-               
-            
-            </tr>
-        </tbody>
+  <div className="relative overflow-x-auto shadow-md sm:rounded-xl flex justify-center items-center">
+    <table className="responsiveTable w-full text-sm text-left rtl:text-right text-white dark:text-white">
+      <thead className="text-xs text-gray-700 uppercase bg-orange-400 dark:bg-orange-400 dark:text-white">
+        <tr>
+          <th scope="col" className="border-4 border-white rounded-xl px-6 py-3">
+            Features
+          </th>
+          <th scope="col" className="border-4 border-white rounded-xl px-6 py-3 plantitle">
+            WOLF
+          </th>
+          <th scope="col" className="border-4 border-white rounded-xl px-6 py-3 plantitle">
+            EAGLE
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr className="bg-white border-b border-gray-600 hover:bg-orange-100">
+          <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 font-bold text-black whitespace-nowrap dark:text-black">
+            Product details
+          </th>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            Xcelmins WOLF is a smart plan designed for individuals who want to have initial experience of systematic investing…
+          </td>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            Xcelmins EAGLE includes multiple engines/avenues for finding investment opportunities across various segments. Eagle has more advance tools which help you to accelerate compounding during favorable environment
+          </td>
+        </tr>
+        <tr className="bg-gray-200 border-b border-gray-600 hover:bg-orange-100">
+          <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 font-bold text-black whitespace-nowrap dark:text-black">
+            Capital Required
+          </th>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            10 Lacs
+          </td>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            25 Lacs
+          </td>
+        </tr>
+        <tr className="bg-white border-b border-gray-600 hover:bg-orange-100">
+          <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 text-black font-bold whitespace-nowrap dark:text-black">
+            Professional Support
+          </th>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            Yes
+          </td>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            Yes
+          </td>
+        </tr>
+        <tr className="bg-gray-200 border-b border-gray-600 hover:bg-orange-100">
+          <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 font-bold text-black whitespace-nowrap dark:text-black">
+            Formal Dashboard
+          </th>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            No
+          </td>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            Yes
+          </td>
+        </tr>
+        <tr className="bg-white border-b border-gray-600 hover:bg-orange-100">
+          <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 font-bold text-black whitespace-nowrap dark:text-black">
+            No. of Strategies
+          </th>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            3
+          </td>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            4
+          </td>
+        </tr>
+        <tr className="bg-gray-200 border-b border-gray-600 hover:bg-orange-100">
+          <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 font-bold text-black whitespace-nowrap dark:text-black">
+            Segments
+          </th>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            Limited
+          </td>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            Multiple
+          </td>
+        </tr>
+        <tr className="bg-white border-b hover:bg-orange-100">
+          <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 font-bold text-black whitespace-nowrap dark:text-black">
+            Xcelmins Booster
+          </th>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            No
+          </td>
+          <td className="border-4 border-white rounded-xl px-6 py-4 text-black">
+            Yes
+          </td>
+        </tr>
+      </tbody>
     </table>
-</div>
-
-);
+  </div>
+  );
 
 const Plans = () =>  (
   <section id="plans" className={layout.section}>

@@ -9,13 +9,13 @@ const Navbar = () => {
 
   return (
     <nav className="w-full flex px-8 py-6 justify-center items-center navbar">
-      <img src={xcel} alt="hoobank" className="w-[270px] h-[60px]" />
+      <img src={xcel} alt="hoobank" className="w-[250px] h-[50px]" />
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
-            className={`font-poppins font-normal cursor-pointer text-[16px] ${
+            className={`font-poppins hover:text-orange-600 font-semibold cursor-pointer text-[16px] ${
               active === nav.title ? "text-orange-600" : "text-black"
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
             onClick={() => setActive(nav.title)}

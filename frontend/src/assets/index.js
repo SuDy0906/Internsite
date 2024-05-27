@@ -29,7 +29,11 @@ import process3 from "./process3.png";
 import process4 from "./process4.png";
 import xcel from "./xcel.png";
 import arrowup from "./arrowUp.svg"
-
+import call from "./call.png"
+import location from "./location.png"
+import mail from "./mail.png"
+import about from "./about.png"
+import hero from "./hero.png"
 export {
   airbnb,
   bill,
@@ -61,5 +65,10 @@ export {
   process3,
   process4,
   xcel,
-  arrowup
+  arrowup,
+  call,
+  location,
+  mail,
+  about,
+  hero
 };

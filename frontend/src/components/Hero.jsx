@@ -1,5 +1,5 @@
 import styles from "../style";
-import { discount, robot } from "../assets";
+import { discount, robot, hero } from "../assets";
 import GetStarted from "./GetStarted";
 
 const Hero = () => {
@@ -15,9 +15,9 @@ const Hero = () => {
         </div> */}
 
         <div className="flex flex-row justify-between items-center w-full">
-          <h1 className="flex-1 font-poppins font-semibold ss:text-[72px] text-[52px] text-black ss:leading-[100.8px] leading-[75px]">
+          <h1 className="flex-1 font-poppins  font-semibold ss:text-[62px] text-[42px] text-black ss:leading-[70.8px] leading-[75px]">
             
-            <span className="text-gradient">Xcelarate</span>{" "}
+            <span className="text-gradient leading-[50px] font-bold ss:text-[72px] text-[52px]">Xcelarate</span>{" "}
             your investment journey <br className="sm:block hidden" />{" "}
           </h1>
           

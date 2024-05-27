@@ -9,10 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/icons-material": "^5.15.18",
+    "@mui/material": "^5.15.18",
+    "@splidejs/react-splide": "^0.7.12",
     "intersection-observer": "^0.12.2",
+    "mui": "^0.0.1",
     "react": "^18.2.0",
     "react-countup": "^6.5.3",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-slick": "^0.30.2",
+    "react-super-responsive-table": "^5.2.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",
