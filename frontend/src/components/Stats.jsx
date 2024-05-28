@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 
 const Stats = () => {
   return (
-    <section className={`${styles.flexCenter} flex-row flex-wrap sm:mb-20 mb-6`}>
+    <section className={`${styles.flexCenter} mt-16 flex-row flex-wrap sm:mb-20 mb-6`}>
       {stats.map((stat, index) => {
         const { ref, inView } = useInView({
           triggerOnce: true, // ensures the animation runs only once

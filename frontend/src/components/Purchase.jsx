@@ -2,12 +2,12 @@ import styles from "../style";
 import PButton from "./PButton";
 
 const Purchase = () => (
-    <section className={`${styles.flexCenter} ${styles.marginY} flex-col sm:flex-row bg-black-gradient-2 rounded-[20px] box-shadow`}>
+    <section className={`${styles.flexCenter} ${styles.marginY} shadow-xl flex-col sm:flex-row bg-black-gradient-2 rounded-[20px] `}>
   <div className="flex flex-col sm:flex-row justify-center items-center sm:space-x-6 space-y-6 sm:space-y-0">
-    <div className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} bg-orange-400 rounded-[20px] box-shadow w-full sm:w-auto`}>
+    <div className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} shadow-xl bg-orange-400 rounded-[20px]  w-full sm:w-auto`}>
       <div className="text-center sm:text-left">
-        <div className="mb-4 font-bold text-xl text-white bg-orange-800 text-center py-3 rounded-lg">Subscribe to Wolf</div>
-        <div className="relative bg-white overflow-x-auto shadow-md sm:rounded-xl">
+        <div className="mb-4 font-bold text-xl text-white shadow-xl bg-orange-800 text-center py-3 rounded-lg">Subscribe to Wolf</div>
+        <div className="relative bg-white overflow-x-auto shadow-xl sm:rounded-xl">
           <table className="w-full text-sm text-left rtl:text-right text-black dark:text-white">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-orange-400 dark:text-white">
               <tr>
@@ -30,10 +30,10 @@ const Purchase = () => (
       </div>
     </div>
 
-    <div className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} bg-orange-400 rounded-[20px] box-shadow w-full sm:w-auto`}>
+    <div className={`${styles.flexCenter} ${styles.marginY} ${styles.padding}  bg-orange-400 rounded-[20px] shadow-xl w-full sm:w-auto`}>
       <div className="text-center sm:text-left">
-        <div className="mb-4 font-bold text-xl text-white bg-orange-800 text-center py-3 rounded-lg">Subscribe to Eagle</div>
-        <div className="relative bg-white overflow-x-auto shadow-md sm:rounded-xl">
+        <div className="mb-4 font-bold text-xl text-white shadow-xl bg-orange-800 text-center py-3 rounded-lg">Subscribe to Eagle</div>
+        <div className="relative bg-white shadow-xl overflow-x-auto  sm:rounded-xl">
           <table className="w-full text-sm text-left rtl:text-right text-black dark:text-white">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-orange-400 dark:text-white">
               <tr>

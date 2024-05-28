@@ -10,10 +10,10 @@ const Planstable = ({ icon, title, content, index }) => (
           <th scope="col" className="border-4 border-white rounded-xl px-6 py-3">
             Features
           </th>
-          <th scope="col" className="border-4 border-white rounded-xl px-6 py-3 plantitle">
+          <th scope="col" className="border-4 border-white rounded-xl py-3 plantitle text-center">
             WOLF
           </th>
-          <th scope="col" className="border-4 border-white rounded-xl px-6 py-3 plantitle">
+          <th scope="col" className="border-4 border-white rounded-xl  py-3 plantitle text-center">
             EAGLE
           </th>
         </tr>

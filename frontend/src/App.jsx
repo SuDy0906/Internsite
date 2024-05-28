@@ -1,42 +1,16 @@
-import styles from "./style";
-import { Billing, Business, CardDeal, Clients, CTA, Footer, Navbar, Stats, Testimonials, Hero, Plans, Contact, Testi, Purchase} from "./components";
-import Founder from "./components/Founder";
-
+import { BrowserRouter, Navigate, Routes, Route} from 'react-router-dom';
+import HomePage from './components/HomePage';
+import LoginPage from './components/LoginPage';
 const App = () => (
-  <div className="bg-white w-full overflow-hidden">
-    <div className={`${styles.flexCenter}`}>
-      <div className={`${styles.boxWidth}` }>
-        <Navbar />
-      </div>
+  <div className="app">
+    <BrowserRouter>
+    <Routes>
+              <Route path='/' element={<HomePage/>}></Route>
+              <Route path='/login' element={<LoginPage/>}></Route>
+              
+            </Routes>
+    </BrowserRouter>
     </div>
-
-    <div className={`bg-white ${styles.flexStart}`}>
-      <div className={`${styles.boxWidth}`}>
-        <Hero />
-      </div>
-    </div>
-    
-    <div className={`bg-white ${styles.paddingX} ${styles.flexCenter}`}>
-      <div className={`${styles.boxWidth}`}>
-        <Stats />
-        <CardDeal />
-        <Business />
-        <Founder/>
-        {/* <Billing /> */}
-        
-        <Plans/>
-        
-        <Testimonials />
-        
-        
-        <CTA />
-        <Purchase/>
-        {/* <Clients /> */}
-        <Contact/>
-        <Footer />
-      </div>
-    </div>
-  </div>
 );
 
 export default App;

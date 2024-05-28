@@ -12,6 +12,7 @@ import Plans from "./Plans"
 import Contact from "./Contact";
 import Testi from "./Testi";
 import Purchase from "./Purchase";
+import Founder from "./Founder";
 
 export {
   Navbar,
@@ -27,5 +28,7 @@ export {
   Plans,
   Contact,
   Testi,
-  Purchase
+  Purchase,
+  Founder
+
 };

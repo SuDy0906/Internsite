@@ -21,6 +21,7 @@
 .plantitle {
   font-family: monospace;
   font-size: xx-large;
+  text-align: center;
 }
 .text-gradient {
   background: linear-gradient(

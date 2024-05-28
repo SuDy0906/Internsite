@@ -1,14 +1,15 @@
 import { useState } from "react";
-
-import { close, xcel, menu} from "../assets";
+import { close, xcel, menu, user} from "../assets";
 import { navLinks } from "../constants";
+import Button from "./Button";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setActive] = useState("Home");
   const [toggle, setToggle] = useState(false);
 
   return (
-    <nav className="w-full z-50 flex px-8 py-6 justify-center items-center navbar">
+    <nav className="w-full z-50 fixed mt-0 flex px-8 py-5 justify-center backdrop-blur-lg items-center navbar">
       <img src={xcel} alt="hoobank" className="w-[250px] h-[50px]" />
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
@@ -24,6 +25,14 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
+      <div className="sm:flex hidden justify-end w-[100px] h-[50px]">
+        <Link to="/login">
+      <div className= "sm:flex hidden  w-[50px] h-[50px] cursor-pointer hover:bg-orange-200 bg-orange-100 rounded-full">
+        <img className = "w-[100%] h-[100%] " src={user} alt="" />
+      </div>
+      </Link>
+      </div>
+      
 
       <div className="sm:hidden flex flex-1 justify-end items-center">
         <img

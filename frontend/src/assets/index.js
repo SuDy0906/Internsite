@@ -15,7 +15,6 @@ import close from "./close.svg";
 import google from "./google.svg";
 import apple from "./apple.svg";
 import arrowUp from "./arrow-up.svg";
-import discount from "./Discount.svg";
 import facebook from "./facebook.svg";
 import instagram from "./instagram.svg";
 import linkedin from "./linkedin.svg";
@@ -34,6 +33,7 @@ import location from "./location.png"
 import mail from "./mail.png"
 import about from "./about.png"
 import hero from "./hero.png"
+import user from "./user.svg"
 export {
   airbnb,
   bill,
@@ -52,7 +52,7 @@ export {
   google,
   apple,
   arrowUp,
-  discount,
+  user,
   facebook,
   instagram,
   linkedin,
