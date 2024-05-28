@@ -1,5 +1,6 @@
 import styles from "./style";
 import { Billing, Business, CardDeal, Clients, CTA, Footer, Navbar, Stats, Testimonials, Hero, Plans, Contact, Testi, Purchase} from "./components";
+import Founder from "./components/Founder";
 
 const App = () => (
   <div className="bg-white w-full overflow-hidden">
@@ -20,8 +21,8 @@ const App = () => (
         <Stats />
         <CardDeal />
         <Business />
-        
-        <Billing />
+        <Founder/>
+        {/* <Billing /> */}
         
         <Plans/>
         

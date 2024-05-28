@@ -8,7 +8,7 @@ const Contact = () => {
         <div className="contactInfo">
           <div>
             <h2>Contact Info</h2>
-            <ul className="info">
+            <ul className="info1">
               <li>
                 <span><img src={location} alt="Location" /></span>
                 <span>

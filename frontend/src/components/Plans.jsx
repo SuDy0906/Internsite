@@ -102,10 +102,14 @@ const Planstable = ({ icon, title, content, index }) => (
   );
 
 const Plans = () =>  (
-  <section id="plans" className={layout.section}>
+  <section id="plans" className={`${styles.paddingY} flex flex-col`}>
     
-
-    <div className={`${layout.sectionImg} flex-col`}>
+    <div className="w-full flex justify-center items-center md:flex-row flex-col sm:mb-16 mb-6 relative z-[1]">
+        <h2 className={`${styles.heading2} ${styles.flexCenter}`}>
+          Our Products
+        </h2>
+      </div>
+    <div className={`${layout.sectionImg}`}>
       {/* {features.map((feature, index) => (
         <FeatureCard key={feature.id} {...feature} index={index} />
       ))} */}

@@ -58,13 +58,13 @@ section1::before
     font-weight: 500;
 }
 
-.container1 .contactInfo ul.info 
+.container1 .contactInfo ul.info1 
 {
    position: relative;
    margin: 20px 0; 
 }
 
-.container1 .contactInfo ul.info li
+.container1 .contactInfo ul.info1 li
 {
    position: relative;
    list-style: none;
@@ -74,14 +74,14 @@ section1::before
    align-items: flex-start;
 }
 
-.container1 .contactInfo ul.info li span:nth-child(1)
+.container1 .contactInfo ul.info1 li span:nth-child(1)
 {
     width: 30px;
     min-width: 30px;
 }
 
 /* for gmail */
-.container1 .contactInfo ul.info li span a
+.container1 .contactInfo ul.info1 li span a
 {
     color: #fff;
     text-decoration: none;
@@ -90,13 +90,13 @@ section1::before
     
 }
 
-.container1 .contactInfo ul.info li span:nth-child(1) img
+.container1 .contactInfo ul.info1 li span:nth-child(1) img
 {
     max-width: 100%;
     filter: invert(1);
 }
 
-.container1 .contactInfo ul.info li span:nth-child(2)
+.container1 .contactInfo ul.info1 li span:nth-child(2)
 {
     color: #fff;
     margin-left: 10px;

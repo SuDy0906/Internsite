@@ -8,7 +8,7 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <nav className="w-full flex px-8 py-6 justify-center items-center navbar">
+    <nav className="w-full z-50 flex px-8 py-6 justify-center items-center navbar">
       <img src={xcel} alt="hoobank" className="w-[250px] h-[50px]" />
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">

@@ -20,6 +20,7 @@ const FeatureCard = ({ icon, title, content, index }) => (
 
 const Business = () =>  (
   <section id="features" className={layout.section}>
+    <div className="absolute z-[0] w-[60%] h-[60%] -left-[50%] rounded-full blue__gradient bottom-40" />
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>
       Focus on Investing, <br className="sm:block hidden" /> We'll Optimize Your Profits.
