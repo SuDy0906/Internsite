@@ -17,8 +17,8 @@ const Hero = () => {
         <div className="flex flex-row justify-between items-center w-full">
           <h1 className="flex-1 font-poppins  font-semibold ss:text-[62px] text-[42px] text-black ss:leading-[70.8px] leading-[75px]">
             
-            <span className="text-gradient leading-[50px] font-bold ss:text-[72px] text-[52px]">Xcelarate</span>{" "}
-            your investment journey <br className="sm:block hidden" />{" "}
+            <span className="text-gradient leading-[50px] font-bold ss:text-[72px] text-[52px]">Rebekko</span>{" "}
+            Financial Services LLP <br className="sm:block hidden" />{" "}
           </h1>
           
           <div className="ss:flex hidden md:mr-4 mr-0">

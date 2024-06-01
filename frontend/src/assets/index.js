@@ -26,7 +26,8 @@ import process1 from "./process1.png";
 import process2 from "./process2.png";
 import process3 from "./process3.png";
 import process4 from "./process4.png";
-import xcel from "./xcel.png";
+import rebekko from "./rebekko.png";
+import rebekko1 from "./rebekko1.png";
 import arrowup from "./arrowUp.svg"
 import call from "./call.png"
 import location from "./location.png"
@@ -64,7 +65,8 @@ export {
   process2,
   process3,
   process4,
-  xcel,
+  rebekko,
+  rebekko1,
   arrowup,
   call,
   location,

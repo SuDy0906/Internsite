@@ -21,6 +21,7 @@
     "react-router-dom": "^6.23.1",
     "react-slick": "^0.30.2",
     "react-super-responsive-table": "^5.2.3",
+    "react-toastify": "^10.0.5",
     "remixicon": "^4.2.0",
     "sass": "^1.77.2"
   },

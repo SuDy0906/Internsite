@@ -5,7 +5,7 @@ import "../table.css"
 const Planstable = ({ icon, title, content, index }) => (
   <div className="relative overflow-x-auto shadow-md sm:rounded-xl flex justify-center items-center">
     <table className="responsiveTable w-full text-sm text-left rtl:text-right text-white dark:text-white">
-      <thead className="text-xs text-gray-700 uppercase bg-orange-400 dark:bg-orange-400 dark:text-white">
+      <thead className="text-xs text-gray-700 uppercase bg-sky-400 dark:bg-sky-400 dark:text-white">
         <tr>
           <th scope="col" className="border-4 border-white rounded-xl px-6 py-3">
             Features
@@ -19,7 +19,7 @@ const Planstable = ({ icon, title, content, index }) => (
         </tr>
       </thead>
       <tbody>
-        <tr className="bg-white border-b border-gray-600 hover:bg-orange-100">
+        <tr className="bg-white border-b border-gray-600 hover:bg-sky-100">
           <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 font-bold text-black whitespace-nowrap dark:text-black">
             Product details
           </th>
@@ -30,7 +30,7 @@ const Planstable = ({ icon, title, content, index }) => (
             Xcelmins EAGLE includes multiple engines/avenues for finding investment opportunities across various segments. Eagle has more advance tools which help you to accelerate compounding during favorable environment
           </td>
         </tr>
-        <tr className="bg-gray-200 border-b border-gray-600 hover:bg-orange-100">
+        <tr className="bg-gray-200 border-b border-gray-600 hover:bg-sky-100">
           <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 font-bold text-black whitespace-nowrap dark:text-black">
             Capital Required
           </th>
@@ -41,7 +41,7 @@ const Planstable = ({ icon, title, content, index }) => (
             25 Lacs
           </td>
         </tr>
-        <tr className="bg-white border-b border-gray-600 hover:bg-orange-100">
+        <tr className="bg-white border-b border-gray-600 hover:bg-sky-100">
           <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 text-black font-bold whitespace-nowrap dark:text-black">
             Professional Support
           </th>
@@ -52,7 +52,7 @@ const Planstable = ({ icon, title, content, index }) => (
             Yes
           </td>
         </tr>
-        <tr className="bg-gray-200 border-b border-gray-600 hover:bg-orange-100">
+        <tr className="bg-gray-200 border-b border-gray-600 hover:bg-sky-100">
           <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 font-bold text-black whitespace-nowrap dark:text-black">
             Formal Dashboard
           </th>
@@ -63,7 +63,7 @@ const Planstable = ({ icon, title, content, index }) => (
             Yes
           </td>
         </tr>
-        <tr className="bg-white border-b border-gray-600 hover:bg-orange-100">
+        <tr className="bg-white border-b border-gray-600 hover:bg-sky-100">
           <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 font-bold text-black whitespace-nowrap dark:text-black">
             No. of Strategies
           </th>
@@ -74,7 +74,7 @@ const Planstable = ({ icon, title, content, index }) => (
             4
           </td>
         </tr>
-        <tr className="bg-gray-200 border-b border-gray-600 hover:bg-orange-100">
+        <tr className="bg-gray-200 border-b border-gray-600 hover:bg-sky-100">
           <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 font-bold text-black whitespace-nowrap dark:text-black">
             Segments
           </th>
@@ -85,7 +85,7 @@ const Planstable = ({ icon, title, content, index }) => (
             Multiple
           </td>
         </tr>
-        <tr className="bg-white border-b hover:bg-orange-100">
+        <tr className="bg-white border-b hover:bg-sky-100">
           <th scope="row" className="border-4 border-white rounded-xl px-6 py-4 font-bold text-black whitespace-nowrap dark:text-black">
             Xcelmins Booster
           </th>
@@ -105,7 +105,7 @@ const Plans = () =>  (
   <section id="plans" className={`${styles.paddingY} flex flex-col`}>
     
     <div className="w-full flex justify-center items-center md:flex-row flex-col sm:mb-16 mb-6 relative z-[1]">
-        <h2 className={`${styles.heading2} ${styles.flexCenter}`}>
+        <h2 className={`${styles.heading2} ${styles.flexCenter} text-sky-900`}>
           Our Products
         </h2>
       </div>

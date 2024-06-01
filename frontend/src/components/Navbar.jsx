@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { close, xcel, menu, user} from "../assets";
+import { close, rebekko, rebekko1, menu, user} from "../assets";
 import { navLinks } from "../constants";
 import Button from "./Button";
 import { Link } from "react-router-dom";
@@ -9,15 +9,15 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <nav className="w-full z-50 fixed mt-0 flex px-8 py-5 justify-center backdrop-blur-lg items-center navbar">
-      <img src={xcel} alt="hoobank" className="w-[250px] h-[50px]" />
+    <nav className="w-full z-50 fixed mt-0 flex px-8 py-3 justify-center backdrop-blur-lg items-center navbar">
+      <Link to="/"><img src={rebekko1} alt="hoobank" className="w-[295px] h-[60px]" /></Link>
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (
           <li
             key={nav.id}
-            className={`font-poppins hover:text-orange-600 font-semibold cursor-pointer text-[16px] ${
-              active === nav.title ? "text-orange-600" : "text-black"
+            className={`font-poppins hover:text-sky-900 font-semibold cursor-pointer text-[16px] ${
+              active === nav.title ? "text-sky-900" : "text-black"
             } ${index === navLinks.length - 1 ? "mr-0" : "mr-10"}`}
             onClick={() => setActive(nav.title)}
           >
@@ -26,8 +26,8 @@ const Navbar = () => {
         ))}
       </ul>
       <div className="sm:flex hidden justify-end w-[100px] h-[50px]">
-        <Link to="/login">
-      <div className= "sm:flex hidden  w-[50px] h-[50px] cursor-pointer hover:bg-orange-200 bg-orange-100 rounded-full">
+        <Link to="/register">
+      <div className= "sm:flex hidden  w-[50px] h-[50px] cursor-pointer hover:bg-blue-200 bg-blue-100 rounded-full">
         <img className = "w-[100%] h-[100%] " src={user} alt="" />
       </div>
       </Link>

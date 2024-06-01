@@ -4,12 +4,12 @@ import PButton from "./PButton";
 const Purchase = () => (
     <section className={`${styles.flexCenter} ${styles.marginY} shadow-xl flex-col sm:flex-row bg-black-gradient-2 rounded-[20px] `}>
   <div className="flex flex-col sm:flex-row justify-center items-center sm:space-x-6 space-y-6 sm:space-y-0">
-    <div className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} shadow-xl bg-orange-400 rounded-[20px]  w-full sm:w-auto`}>
+    <div className={`${styles.flexCenter} ${styles.marginY} ${styles.padding} shadow-xl bg-slate-600 rounded-[20px]  w-full sm:w-auto`}>
       <div className="text-center sm:text-left">
-        <div className="mb-4 font-bold text-xl text-white shadow-xl bg-orange-800 text-center py-3 rounded-lg">Subscribe to Wolf</div>
+        <div className="mb-4 font-bold text-xl text-white shadow-xl bg-slate-900 text-center py-3 rounded-lg">Subscribe to Wolf</div>
         <div className="relative bg-white overflow-x-auto shadow-xl sm:rounded-xl">
           <table className="w-full text-sm text-left rtl:text-right text-black dark:text-white">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-orange-400 dark:text-white">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-sky-900 dark:text-white">
               <tr>
                 <th className="border-4 border-white rounded-xl px-5 py-3">Monthly</th>
                 <th className="border-4 border-white rounded-xl px-5 py-3">3 Months</th>
@@ -18,7 +18,7 @@ const Purchase = () => (
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white border-b border-gray-600 hover:bg-orange-100">
+              <tr className="bg-white border-b border-gray-600 hover:bg-sky-100">
                 <th className="border-4 border-white rounded-xl px-1 py-1 font-bold text-black whitespace-nowrap dark:text-black"><PButton /></th>
                 <td className="border-4 border-white rounded-xl px-1 py-1 text-black"><PButton /></td>
                 <td className="border-4 border-white rounded-xl px-1 py-1 text-black"><PButton /></td>
@@ -30,12 +30,12 @@ const Purchase = () => (
       </div>
     </div>
 
-    <div className={`${styles.flexCenter} ${styles.marginY} ${styles.padding}  bg-orange-400 rounded-[20px] shadow-xl w-full sm:w-auto`}>
+    <div className={`${styles.flexCenter} ${styles.marginY} ${styles.padding}  bg-slate-600 rounded-[20px] shadow-xl w-full sm:w-auto`}>
       <div className="text-center sm:text-left">
-        <div className="mb-4 font-bold text-xl text-white shadow-xl bg-orange-800 text-center py-3 rounded-lg">Subscribe to Eagle</div>
+        <div className="mb-4 font-bold text-xl text-white shadow-xl bg-slate-900 text-center py-3 rounded-lg">Subscribe to Eagle</div>
         <div className="relative bg-white shadow-xl overflow-x-auto  sm:rounded-xl">
           <table className="w-full text-sm text-left rtl:text-right text-black dark:text-white">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-orange-400 dark:text-white">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-sky-900 dark:text-white">
               <tr>
                 <th className="border-4 border-white rounded-xl px-5 py-3">Monthly</th>
                 <th className="border-4 border-white rounded-xl px-5 py-3">3 Months</th>
@@ -44,7 +44,7 @@ const Purchase = () => (
               </tr>
             </thead>
             <tbody>
-              <tr className="bg-white border-b border-gray-600 hover:bg-orange-100">
+              <tr className="bg-white border-b border-gray-600 hover:bg-sky-100">
                 <th className="border-4 border-white rounded-xl px-1 py-1 font-bold text-black whitespace-nowrap dark:text-black"><PButton /></th>
                 <td className="border-4 border-white rounded-xl px-1 py-1 text-black"><PButton /></td>
                 <td className="border-4 border-white rounded-xl px-1 py-1 text-black"><PButton /></td>

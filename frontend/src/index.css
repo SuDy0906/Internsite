@@ -5,13 +5,16 @@
 @tailwind utilities;
 
 :root {
-  --black-gradient: linear-gradient(
-    144.39deg,
+  background: linear-gradient(
+    -168.39deg,
     #FFFFFF -278.56%, /* White */
-    #FFEEDD -78.47%, /* Light Orange Tint */
-    #FFD9B3 91.61% /* Soft Orange */
+    #d1e6f4 -78.47%, /* Lighter tone of #a4cae9 */
+    #a4cae9 91.61%   /* Original #a4cae9 */
 );
-  --card-shadow: 0px 20px 100px -10px rgba(255, 194, 153, 0.5);
+
+
+--card-shadow: 0px 20px 100px -10px rgba(38, 74, 120, 0.5); /* #264a78 with 50% opacity */
+
 }
 
 * {
@@ -26,13 +29,14 @@
 .text-gradient {
   background: linear-gradient(
     157.81deg,
-    #FFA07A -43.27%, /* Light Salmon */
-    #FF7F50 -21.24%, /* Coral */
-    #FF6347 12.19%, /* Tomato */
-    #FF4500 29.82%, /* OrangeRed */
-    #FFA500 51.94%, /* Orange */
-    #FF8C00 90.29% /* DarkOrange */
+    #B0C4DE -43.27%, /* Light Steel Blue */
+    #87CEFA -21.24%, /* Light Sky Blue */
+    #4682B4 12.19%,  /* Steel Blue */
+    #5F9EA0 29.82%,  /* Cadet Blue */
+    #264a78 51.94%,  /* Original Blue (#264a78) */
+    #1E3D66 90.29%   /* Darker Blue */
 );
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -42,12 +46,12 @@
 .bg-blue-gradient {
   background: linear-gradient(
     157.81deg,
-    #FFA07A -43.27%, /* Light Salmon */
-    #FF7F50 -21.24%, /* Coral */
-    #FF6347 12.19%, /* Tomato */
-    #FF4500 29.82%, /* OrangeRed */
-    #FFA500 51.94%, /* Orange */
-    #FF8C00 90.29% /* DarkOrange */
+    #B0C4DE -43.27%, /* Light Steel Blue */
+    #87CEFA -21.24%, /* Light Sky Blue */
+    #4682B4 12.19%,  /* Steel Blue */
+    #5F9EA0 29.82%,  /* Cadet Blue */
+    #264a78 51.94%,  /* Original Blue (#264a78) */
+    #1E3D66 90.29%   /* Darker Blue */
 );
 }
 
@@ -64,11 +68,10 @@
 .bg-black-gradient-2 {
   background: linear-gradient(
     -168.39deg,
-    #ffffff -278.56%, /* White */
-    #ffeedd -78.47%,  /* Light Orange Tint */
-    #ffd9b3 91.61%    /* Soft Orange */
-
-  );
+    #ffffff -278.56%,  /* White */
+    #c2d3e1 -78.47%,   /* Light Blue Tint (lighter tone of #84a4ba) */
+    #a4b9c9 91.61%     /* Soft Blue (slightly darker tone of #84a4ba) */
+);
 }
 
 .bg-gray-gradient {
@@ -133,7 +136,7 @@
 }
 
 .blue__gradient {
-  background: linear-gradient(180deg, rgba(255, 165, 0, 0) 0%, #ff8c00 100%);
+  background: linear-gradient(180deg, rgba(38, 74, 120, 0) 0%, #264a78 100%);
   filter: blur(123px);
 }
 

@@ -1,8 +1,7 @@
 import Navbar from "./Navbar";
 import Billing from "./Billing";
-import CardDeal from "./CardDeal";
-import Business from "./Business";
-import Clients from "./Clients";
+import CardDeal from "./AboutUs";
+import Business from "./Process";
 import CTA from "./CTA";
 import Stats from "./Stats";
 import Footer from "./Footer";
@@ -13,13 +12,17 @@ import Contact from "./Contact";
 import Testi from "./Testi";
 import Purchase from "./Purchase";
 import Founder from "./Founder";
+import HomePage from "./HomePage";
+import LoginPage from "./LoginPage";
+import Register from "./Register";
+import Signout from "./Signout";
+import Button1 from "./Button1";
 
 export {
   Navbar,
   Billing,
   CardDeal,
   Business,
-  Clients,
   CTA,
   Stats,
   Footer,
@@ -29,6 +32,10 @@ export {
   Contact,
   Testi,
   Purchase,
-  Founder
-
+  Founder,
+  HomePage,
+  LoginPage,
+  Register,
+  Signout,
+  Button1
 };

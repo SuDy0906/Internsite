@@ -37,7 +37,7 @@ body {
   font-weight: bold;
   font-size: 1.7rem;
   line-height: 1.1;
-  color: #ff6f59;
+  color: #264a78;
 }
 
 /* Slider container */
@@ -45,7 +45,7 @@ body {
   position: relative;
   user-select: none;
   padding-inline: 1rem;
-  box-shadow: #ff6f59;
+  box-shadow: #264a78;
   
 }
 
@@ -102,7 +102,7 @@ body {
 }
 
 .slider-container .content .star {
-  color: #ff6f59;
+  color: #264a78;
   font-size: 1.1rem;
 }
 
@@ -111,7 +111,7 @@ body {
 }
 
 .splide__pagination__page.is-active {
-  background-color: #ff6f59;
+  background-color: #264a78;
 }
 
 .splide__arrow {

@@ -4,7 +4,7 @@ import { twitter , linkedin, facebook, instagram, mail, call, location} from '..
 const Contact = () => {
   return (
     <section>
-      <div className="container1">
+      <div className="container1 bg-orange-50 z-10">
         <div className="contactInfo">
           <div>
             <h2>Contact Info</h2>

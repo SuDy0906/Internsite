@@ -4,17 +4,18 @@
 /*=============== VARIABLES CSS ===============*/
 :root {
   /*========== Colors ==========*/
-  /*Color mode HSL(hue, saturation, lightness)*/
-  --first-color: hsl(28, 95%, 64%); /* A strong orange color close to bg-orange-400 */
-  --first-color-light: hsl(28, 95%, 74%); /* A lighter version of the orange */
-  --first-color-lighten: hsl(28, 95%, 84%); /* An even lighter version of the orange */
-  --gradient-color: linear-gradient(180deg,
-                  hsl(28, 95%, 74%),
-                  hsl(28, 95%, 54%)); /* Gradient from lighter to darker orange */
-  --title-color: hsl(28, 75%, 34%); /* A darker orange for titles */
-  --text-color: hsl(28, 65%, 44%); /* A softer orange for text */
-  --white-color: #fff;
-  --body-color: hsl(28, 95%, 94%); /* A very light orange for the background */
+  /* Color mode HSL (hue, saturation, lightness) */
+--first-color: hsl(207, 25%, 62%); /* Base color */
+--first-color-light: hsl(207, 25%, 72%); /* Lighter version */
+--first-color-lighten: hsl(207, 25%, 82%); /* Even lighter version */
+--gradient-color: linear-gradient(180deg,
+                hsl(207, 25%, 72%),
+                hsl(207, 25%, 52%)); /* Gradient from lighter to darker */
+--title-color: hsl(207, 25%, 42%); /* Darker version for titles */
+--text-color: hsl(207, 25%, 52%); /* Softer color for text */
+--white-color: #fff;
+--body-color: hsl(207, 25%, 92%); /* Very light version for the background */
+
   
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/

@@ -1,5 +1,5 @@
 import styles from "../style";
-import { xcel } from "../assets";
+import { rebekko1 } from "../assets";
 import { footerLinks, socialMedia } from "../constants";
 
 const Footer = () => (
@@ -7,7 +7,7 @@ const Footer = () => (
     <div className={`${styles.flexStart} md:flex-row flex-col mb-8 w-full`}>
       <div className="flex-[1] flex flex-col justify-start mr-10">
         <img
-          src={xcel}
+          src={rebekko1}
           alt="hoobank"
           className="w-[266px] h-[72.14px] object-contain"
         />
@@ -40,7 +40,7 @@ const Footer = () => (
     </div>
 
     <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[1px] border-t-[#3F3E45]">
-      <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-white">
+      <p className="font-poppins font-normal text-center text-[18px] leading-[27px] text-black">
         Copyright Ⓒ 2022 HooBank. All Rights Reserved.
       </p>
 

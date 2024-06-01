@@ -40,7 +40,7 @@ section1::before
     top: 40px;
     width: 350px;
     height: calc(100% - 80px);
-    background: #ea580c;
+    background: #264a78;
     z-index: 1;
     padding: 40px;
     display: flex;
@@ -140,7 +140,7 @@ section1::before
 
 .container1 .contactForm h2
 {
-    color: rgb(234 88 12);
+    color: #264a78;
     font-size: 24px;
     font-weight: 500;
 }
@@ -209,7 +209,7 @@ section1::before
     font-size:  12px;
     font-weight: 400;
     letter-spacing: 1px;
-    color: rgb(234 88 12);
+    color: #264a78;
     font-weight: 500;
 } 
 
@@ -218,7 +218,7 @@ section1::before
 {
     position: relative;
     cursor: pointer;
-    background: rgb(234 88 12);
+    background: #264a78;
     border-radius: 20px;
     color: #fff;
     border: none;
@@ -228,7 +228,7 @@ section1::before
 }
 
 .container1 .contactForm .formBox .inputBox input[type="submit"]:hover{
-    background: rgb(234 88 12);
+    background: #264a78;
 }
 
 /* make the form responsive */

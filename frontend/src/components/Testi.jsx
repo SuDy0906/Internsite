@@ -7,7 +7,7 @@ import { quotes } from '../assets';
 const Testi = () => {
   return (
     <section className="testimonial-container">
-      <div className="title1">
+      <div className="title1 text-sky-900">
         <h2>Testimonial</h2>
         
       </div>
