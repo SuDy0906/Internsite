@@ -17,6 +17,9 @@ import LoginPage from "./LoginPage";
 import Register from "./Register";
 import Signout from "./Signout";
 import Button1 from "./Button1";
+import ComplexTable from "./ComplexTable";
+import Dashboard from "./Dashboard";
+import Dropdown from "./Dropdown";
 
 export {
   Navbar,
@@ -37,5 +40,8 @@ export {
   LoginPage,
   Register,
   Signout,
-  Button1
+  Button1,
+  ComplexTable,
+  Dashboard,
+  Dropdown
 };

@@ -1,25 +1,35 @@
-import { Navigate, Routes, Route} from 'react-router-dom';
-import { Navbar, HomePage, LoginPage, Register, Signout } from './components';
+import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
+import { Navbar, HomePage, LoginPage, Register, Signout, Dashboard } from './components';
 import styles from './style';
+import UserDash from './components/UserDash';
 
-const App = () => (
-  <div className="app">
+const App = () => {
+  const location = useLocation();
 
-    <div className={`${styles.flexCenter}`}>
-      <div className={`${styles.boxWidth}` }>
-        <Navbar />
-      </div>
+  // Determine if the current route is the dashboard
+  const isDashboardRoute = location.pathname === '/userdash';
+
+  return (
+    <div className="app">
+      {/* Render Navbar only if the current route is not the dashboard */}
+      {!isDashboardRoute && (
+        <div className={`${styles.flexCenter}`}>
+          <div className={`${styles.boxWidth}`}>
+            <Navbar />
+          </div>
+        </div>
+      )}
+
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/ll' element={<Signout />} />
+        <Route path='/userdash' element={<Dashboard />} />
+      
+      </Routes>
     </div>
-    <Routes>
-    
-              <Route path='/' element={<HomePage/>}></Route>
-              <Route path='/login' element={<LoginPage/>}></Route>
-              <Route path='/register' element={<Register/>}></Route> 
-              <Route path='/ll' element={<Signout/>}></Route> 
-              
-            </Routes>
-    
-    </div>
-);
+  );
+};
 
 export default App;

@@ -5,12 +5,7 @@
 @tailwind utilities;
 
 :root {
-  background: linear-gradient(
-    -168.39deg,
-    #FFFFFF -278.56%, /* White */
-    #d1e6f4 -78.47%, /* Lighter tone of #a4cae9 */
-    #a4cae9 91.61%   /* Original #a4cae9 */
-);
+  background: #eff6ff;
 
 
 --card-shadow: 0px 20px 100px -10px rgba(38, 74, 120, 0.5); /* #264a78 with 50% opacity */
@@ -58,10 +53,9 @@
 .bg-black-gradient {
   background: linear-gradient(
     144.39deg,
-    #ffffff -278.56%, /* White */
-    #ffeedd -78.47%,  /* Light Orange Tint */
-    #ffd9b3 91.61%    /* Soft Orange */
-
+    #ffffff -278.56%,  /* White */
+    #c2d3e1 -78.47%,   /* Light Blue Tint (lighter tone of #84a4ba) */
+    #a4b9c9 91.61%   
   );
 }
 
@@ -88,7 +82,7 @@
 }
 
 .box-shadow {
-  box-shadow: 0px 20px 100px -10px rgba(255, 171, 96, 0.3); /* Soft Orange Shadow */
+  box-shadow: 0px 20px 100px -10px rgba(51, 102, 153, 0.3); /* Dark Bluish Shadow */
 }
 
 .sidebar {

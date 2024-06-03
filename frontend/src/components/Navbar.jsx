@@ -9,8 +9,8 @@ const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
   return (
-    <nav className="w-full z-50 fixed mt-0 flex px-8 py-3 justify-center backdrop-blur-lg items-center navbar">
-      <Link to="/"><img src={rebekko1} alt="hoobank" className="w-[295px] h-[60px]" /></Link>
+    <nav className="w-full z-50 fixed mt-0 flex px-8 py-3 justify-center bg-blue-50 items-center navbar ">
+      <Link to="/"><img src={rebekko} alt="hoobank" className="w-[270px] h-[60px]" /></Link>
 
       <ul className="list-none sm:flex hidden justify-end items-center flex-1">
         {navLinks.map((nav, index) => (

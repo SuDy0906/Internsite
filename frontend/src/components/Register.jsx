@@ -1,5 +1,7 @@
+// src/components/Register.js
+
 import React, { useState, useEffect } from "react";
-import { useFirebase } from "../context/Firebase";
+import { useFirebase } from "../context/Firebase"; // Ensure the import path is correct
 import { useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -17,7 +19,7 @@ const Register = () => {
 
   useEffect(() => {
     if (firebase.isLoggedIn) {
-      console.log("logged", firebase.isLoggedIn)
+      console.log("logged", firebase.isLoggedIn);
       navigate('/ll');
     }
   }, [firebase, navigate]);
@@ -39,9 +41,8 @@ const Register = () => {
     }
 
     try {
-      const result = await firebase.SignUpWithEmailPassword(email, password);
+      const result = await firebase.signUpWithEmailPassword(email, password, name); // Pass the name
       console.log("success", result);
-      
     } catch (error) {
       console.error("Error logging in:", error);
       setError(error.message); // Display the error message

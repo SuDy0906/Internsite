@@ -35,6 +35,10 @@ import mail from "./mail.png"
 import about from "./about.png"
 import hero from "./hero.png"
 import user from "./user.svg"
+import date from "./date.svg"
+import money from "./money.svg"
+import profit from "./profit.svg"
+import code from "./code.svg"
 export {
   airbnb,
   bill,
@@ -72,5 +76,9 @@ export {
   location,
   mail,
   about,
-  hero
+  hero,
+  code,
+  money, 
+  profit,
+  date
 };

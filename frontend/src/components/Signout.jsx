@@ -17,7 +17,7 @@ const Signout = () => {
         navigate('/');
     }
     const navDash = () => {
-        navigate('/dash');
+        navigate('/userdash');
     }
     const handleSignOut = async () => {
         try {
@@ -29,7 +29,7 @@ const Signout = () => {
       };
     
   return (
-    <div className='flex items-center mt-[98px] flex-col text-blue-50 h-full'>
+    <div className='flex items-center mt-[98px] flex-col bg-blue-50 h-full'>
         <h1 className="text-center text-5xl font-semibold text-sky-900 p-16">Hello User!!! Your are Logged In</h1>
         <div classname ='flex gap-4'>
         <Button1 func={handleSignOut} title = {"Sign Out"}/>
