@@ -181,7 +181,7 @@ section1::before
     color: #333;
     border: none;
     outline: none;
-    border-bottom: 1px solid #777;
+    border-bottom: 1px solid #3a7acd;
 }
 
 .container1 .contactForm .formBox .inputBox textarea 

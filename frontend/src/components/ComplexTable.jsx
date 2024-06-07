@@ -43,7 +43,7 @@ const ComplexTable = (props) => {
         </div>
       </div>
 
-      <div className="mt-8 overflow-x-scroll xl:overflow-hidden">
+      <div className="mt-8 overflow-x-scroll xl:overflow-hidden custom-scrollbar">
         <table {...getTableProps()} className="w-full">
           <thead>
             {headerGroups.map((headerGroup, index) => (

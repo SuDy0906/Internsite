@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
-import { getFirestore, setDoc, doc } from "firebase/firestore"; // Import setDoc and doc
+import { getFirestore, setDoc, doc, updateDoc, getDoc } from "firebase/firestore"; // Import setDoc and doc
 
 const firebaseConfig = {
     apiKey: "AIzaSyCQE15q8hOXLxg4gJlsKw1_sJmwKPV0smI",
@@ -29,7 +29,34 @@ export const FirebaseProvider = (props) => {
         // Add user data to Firestore
         await setDoc(doc(db, "users", user.uid), {
             name: name,
-            email: email
+            email: email,
+            netProfit: "0",
+            startDate: "0",
+            totalContribution: "0",
+            clientCode: "0",
+            cash: {
+                cashName: ["0"],
+                currentProfit: ["0"],
+                entryPrice: ["0"],
+                currentPnl: ["0"],
+            },
+            derivatives: {
+                derivativeName: ["0"],
+                quantity: ["0"],
+                pnl: ["0"],
+            },
+            historyCash: {
+                hCashName: ["0"],
+                hCurrentProfit: ["0"],
+                hEntryPrice: ["0"],
+                hCurrentPnl: ["0"],
+            },
+            historyDerivative: {
+                hDerivativeName: ["0"],
+                hQuantity: ["0"],
+                hPnl: ["0"],
+            },
+        
         });
         return userCredential;
     };
@@ -55,8 +82,37 @@ export const FirebaseProvider = (props) => {
         return signOut(auth);
     };
 
+    const updateFirestoreData = async (userId, parsedData) => {
+        try {
+          const userDocRef = doc(db, 'users', userId);
+      
+          // Convert the nested arrays into objects
+          const cashObj = {};
+          parsedData.cashName.forEach((item, index) => {
+            cashObj[index] = {
+              cashName: item,
+              currentProfit: parsedData.currentProfit[index],
+              entryPrice: parsedData.entryPrice[index],
+              currentPnl: parsedData.currentPnl[index],
+            };
+          });
+      
+          // Construct the data object to update, including the converted nested arrays
+          const dataToUpdate = {
+            cash: cashObj,
+            // Add more fields or nested arrays as needed
+          };
+      
+          // Update the document using setDoc with merge: true to only update specified fields
+          await setDoc(userDocRef, dataToUpdate, { merge: true });
+      
+          console.log('Firestore data updated successfully!');
+        } catch (error) {
+          console.error('Error updating Firestore:', error);
+        }
+      };
     return (
-        <FirebaseContext.Provider value={{ signUpWithEmailPassword, logInWithEmailPassword, isLoggedIn, signOutUser }}>
+        <FirebaseContext.Provider value={{ signUpWithEmailPassword, logInWithEmailPassword, isLoggedIn, signOutUser, updateFirestoreData }}>
             {props.children}
         </FirebaseContext.Provider>
     );

@@ -76,22 +76,22 @@ const UserDash = () => {
         <Widget
           icon={code}
           title={"Client Code"}
-          subtitle={userDetails["client-code"]}
+          subtitle={userDetails["clientCode"]}
         />
         <Widget
           icon={date}
           title={"Starting Date"}
-          subtitle={userDetails["start-date"]}
+          subtitle={userDetails["startDate"]}
         />
         <Widget
           icon={profit}
           title={"Net profit"}
-          subtitle={userDetails["net-profit"]}
+          subtitle={userDetails["netProfit"]}
         />
         <Widget
           icon={money}
           title={"Total Contribution"}
-          subtitle={userDetails["total-contribution"]}
+          subtitle={userDetails["totalContribution"]}
         />
       </div>
       <div className="mt-5 grid grid-cols-2 gap-5 xl:grid-cols-2">

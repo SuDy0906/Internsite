@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import UserDash from './UserDash';
-import Sidebar from './Sidebar';
-import Sidebar11 from './Sidebar11';
-import Navbar from './DashNav';
+import React, { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Sidebar from "./Sidebar11";
+import UserDash from "./UserDash";
+import Navbar from "./DashNav";
 import { db, auth } from "../context/Firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import { Routes, Route } from 'react-router-dom';
+import { Upload } from "./Upload";
 
 const Dashboard = () => {
   const [userDetails, setUserDetails] = useState(null);
@@ -38,23 +38,22 @@ const Dashboard = () => {
     return <div>Loading...</div>; // or a spinner/loading indicator
   }
 
-  console.log(userDetails["name"])
-
   return (
-    <>
-
-      <div className='flex flex-auto h-screen'>
-        <Sidebar />
-        <div className='grow'>
-        
-          <div className='flex-grow px-4 py-6'>
-          <Navbar className='px-4 py-6'/>
-          <UserDash/>
-          </div>
+    <div className="flex h-screen overflow-hidden">
+      <Sidebar className="z-50" />
+      <div className="flex-grow flex flex-col overflow-y-auto px-4">
+        <Navbar name={userDetails["name"]} className="px-6 py-6" />
+        <div className="flex-grow  py-6">
+          <Routes>
+            <Route path="/userdash" element={<UserDash />} />
+            <Route path="/cash" element={<div>User Page</div>} />
+            <Route path="/derivative" element={<div>Messages Page</div>} />
+            <Route path="/upload" element={<Upload />} />
+          </Routes>
         </div>
       </div>
-    </>
+    </div>
   );
-}
+};
 
 export default Dashboard;
