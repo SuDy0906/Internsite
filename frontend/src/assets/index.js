@@ -28,6 +28,7 @@ import process3 from "./process3.png";
 import process4 from "./process4.png";
 import rebekko from "./rebekko.png";
 import rebekko1 from "./rebekko1.png";
+import rebekkofull from "./rebekkofull.png";
 import arrowup from "./arrowUp.svg"
 import call from "./call.png"
 import location from "./location.png"
@@ -80,5 +81,6 @@ export {
   code,
   money, 
   profit,
-  date
+  date,
+  rebekkofull
 };

@@ -1,11 +1,10 @@
-import { IoDocuments } from "react-icons/io5";
-import { MdBarChart, MdDashboard } from "react-icons/md";
 import { useState, useEffect } from "react";
-import Widget from "./Widget";
-import ComplexTable from "./ComplexTable";
-import { db, auth } from "../context/Firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
+import Widget from "./Widget";
+import Widget1 from "./Widget1";
+import ComplexTable from "./ComplexTable";
+import { db, auth } from "../context/Firebase";
 import { money, date, profit, code } from "../assets";
 
 const UserDash = () => {
@@ -21,9 +20,10 @@ const UserDash = () => {
       const userSnapshot = await getDoc(userDoc);
       if (userSnapshot.exists()) {
         const userData = userSnapshot.data();
+        console.log("User Data:", userData); // Log user data
         setUserDetails(userData);
-        setColumnsAndRows(userData.cash, setCashColumns, setCashRows);
-        setColumnsAndRows(userData.derivatives, setDerivativeColumns, setDerivativeRows);
+        setColumnsAndRows(userData.cash, setCashColumns, setCashRows, "dailyProfit");
+        setColumnsAndRows(userData.derivatives, setDerivativeColumns, setDerivativeRows, "dailyProfit");
       } else {
         console.log("No such document!");
       }
@@ -40,30 +40,44 @@ const UserDash = () => {
     return () => unsubscribe();
   }, []);
 
-  const setColumnsAndRows = (data, setColumns, setRows) => {
+  const setColumnsAndRows = (data, setColumns, setRows, excludeField) => {
     if (data) {
-      // Define columns
-      const dynamicColumns = Object.keys(data).map((key) => ({
-        Header: key.replace('-', ' ').toUpperCase(),
-        accessor: key,
-      }));
-
-      // Find the maximum length of the arrays
-      const maxLength = Math.max(...Object.values(data).map(arr => arr.length));
-
-      // Generate rows
-      const dynamicRows = Array.from({ length: maxLength }, (_, index) => {
-        const row = {};
-        for (let key in data) {
-          row[key] = data[key][index];
-        }
-        return row;
-      });
-
+      console.log("Data received for setting columns and rows:", data); // Log received data
+  
+      // Define the desired order of columns
+      const desiredColumnOrder = [
+        "name",
+        "currentPrice",
+        "entryPrice",
+        "quantity",
+        "currentPnl",
+        
+      ];
+  
+      // Define columns based on the desired order
+      const dynamicColumns = desiredColumnOrder
+        .filter((key) => key !== excludeField && data[key]) // Filter out excluded field and non-existent data keys
+        .map((key) => ({
+          Header: key.replace('_', ' ').toUpperCase(), // Use underscore for replace
+          accessor: key,
+        }));
+  
+      console.log("Columns:", dynamicColumns); // Log columns
+  
       setColumns(dynamicColumns);
-      setRows(dynamicRows);
+      setRows(data[desiredColumnOrder[0]].map((_, index) => {
+        const row = {};
+        desiredColumnOrder.forEach((key) => {
+          if (key !== excludeField && data[key]) {
+            row[key] = data[key][index];
+          }
+        });
+        return row;
+      }));
     }
   };
+
+      
 
   if (!userDetails) {
     return <div>Loading...</div>;
@@ -83,10 +97,12 @@ const UserDash = () => {
           title={"Starting Date"}
           subtitle={userDetails["startDate"]}
         />
-        <Widget
+        <Widget1
           icon={profit}
-          title={"Net profit"}
+          title={"Net Profit"}
           subtitle={userDetails["netProfit"]}
+          title1={"RoI"}
+          subtitle1={userDetails["netProfit"]/userDetails["totalContribution"]}
         />
         <Widget
           icon={money}
@@ -95,10 +111,9 @@ const UserDash = () => {
         />
       </div>
       <div className="mt-5 grid grid-cols-2 gap-5 xl:grid-cols-2">
-        <ComplexTable columnsData={cashColumns} tableData={cashRows} title="Cash" />
-        <ComplexTable columnsData={derivativeColumns} tableData={derivativeRows} title="Derivatives" />
+        <ComplexTable columnsData={cashColumns} tableData={cashRows} title="Cash" pnl={userDetails.cash.dailyProfit} />
+        <ComplexTable columnsData={derivativeColumns} tableData={derivativeRows} title="Derivatives" pnl={userDetails.derivatives.dailyProfit} />
       </div>
-      
     </div>
   );
 };

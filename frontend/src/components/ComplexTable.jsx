@@ -5,12 +5,10 @@ import {
   useSortBy,
   useTable,
 } from "react-table";
-import { MdCheckCircle, MdCancel, MdOutlineError } from "react-icons/md";
 import { useMemo } from "react";
-import Progress from "./TableComponents/Card";
 
 const ComplexTable = (props) => {
-  const { columnsData, tableData, title } = props;
+  const { columnsData, tableData, title, pnl } = props;
 
   const columns = useMemo(() => columnsData, [columnsData]);
   const data = useMemo(() => tableData, [tableData]);
@@ -33,7 +31,7 @@ const ComplexTable = (props) => {
     prepareRow,
     initialState,
   } = tableInstance;
-  initialState.pageSize = 5;
+  initialState.pageSize = 100;
 
   return (
     <Card extra={"w-full h-full px-6 pb-6 sm:overflow-x-auto"}>
@@ -41,6 +39,7 @@ const ComplexTable = (props) => {
         <div className="text-xl font-bold text-navy-700 dark:text-black">
           {title}
         </div>
+        <div className={` font-semibold ${pnl >= 0 ? "text-green-500" : "text-red-500"}`}>{pnl}</div>
       </div>
 
       <div className="mt-8 overflow-x-scroll xl:overflow-hidden custom-scrollbar">
@@ -52,9 +51,10 @@ const ComplexTable = (props) => {
                   <th
                     {...column.getHeaderProps()}
                     key={index}
-                    className="border-b border-gray-200 pr-28 pb-[10px] text-start dark:!border-navy-700"
+                    className="border-b border-gray-200  pb-[10px] text-start  dark:!border-navy-700"
+                    style={{ minWidth: '60px' }} // Adjust the min-width as needed
                   >
-                    <p className="text-xs tracking-wide text-gray-600">
+                    <p className="text-[10px] tracking-wide text-gray-600">
                       {column.render("Header")}
                     </p>
                   </th>
@@ -68,17 +68,32 @@ const ComplexTable = (props) => {
               return (
                 <tr {...row.getRowProps()} key={index}>
                   {row.cells.map((cell, index) => {
-                    return (
-                      <td
-                        className="pt-[14px] pb-[18px] sm:text-[14px]"
-                        {...cell.getCellProps()}
-                        key={index}
-                      >
-                        <p className="text-sm font-bold text-navy-700 dark:text-black">
-                          {cell.value}
-                        </p>
-                      </td>
-                    );
+                    // Check if the cell corresponds to 'currentPnl' column
+                    if (cell.column.id === 'currentPnl') {
+                      return (
+                        <td
+                          className="pt-[10px] pb-[10px] sm:text-[10px] "
+                          {...cell.getCellProps()}
+                          key={index}
+                          style={{ minWidth: '60px' }} // Adjust the min-width as needed
+                        >
+                          <p className={` font-semibold ${cell.value >= 0 ? "text-green-500" : "text-red-500"}`}>
+                            {cell.value}
+                          </p>
+                        </td>
+                      );
+                    } else {
+                      return (
+                        <td
+                          className="pt-[10px] pb-[10px] sm:text-[10px] text-black"
+                          {...cell.getCellProps()}
+                          key={index}
+                          style={{ minWidth: '60px' }} // Adjust the min-width as needed
+                        >
+                          {cell.render("Cell")}
+                        </td>
+                      );
+                    }
                   })}
                 </tr>
               );

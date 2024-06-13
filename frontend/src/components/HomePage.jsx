@@ -18,10 +18,10 @@ const HomePage = () => (
         <Business />
         <Founder/>
         {/* <Billing /> */}
-        <Plans/>
+        {/* <Plans/> */}
         <Testimonials />
         <CTA />
-        <Purchase/>
+        {/* <Purchase/> */}
         <Contact/>
         <Footer />
       </div>

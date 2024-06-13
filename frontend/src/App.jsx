@@ -1,6 +1,7 @@
 import { Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar, HomePage, LoginPage, Register, Signout, Dashboard } from './components';
 import styles from './style';
+import Pricing from './components/Pricing';
 
 const App = () => {
   const location = useLocation();
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/ll" element={<Signout />} />
         <Route path="/dashboard/*" element={<Dashboard />} />
+        <Route path="/pricing" element={<Pricing/>} />
       </Routes>
     </div>
   );

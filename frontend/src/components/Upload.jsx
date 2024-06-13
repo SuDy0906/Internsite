@@ -1,146 +1,121 @@
-import React, { useState } from 'react';
-import Papa from 'papaparse';
-import * as XLSX from 'xlsx';
-import { useFirebase } from '../context/Firebase'; // Import the context function
+import React, { useRef, useState } from "react";
+import "./FileUpload.css";
+import axios from "axios";
 
-export const Upload = () => {
-  const {updateFirestoreData} = useFirebase();
-  const [fileUserDetails, setFileUserDetails] = useState(null);
-  const [parsedDataUserDetails, setParsedDataUserDetails] = useState(null);
+const FileUpload = () => {
+  const inputRef = useRef();
 
-  const [fileCash, setFileCash] = useState(null);
-  const [parsedDataCash, setParsedDataCash] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [progress, setProgress] = useState(0);
+  const [uploadStatus, setUploadStatus] = useState("select");
 
-  const [fileDerivatives, setFileDerivatives] = useState(null);
-  const [parsedDataDerivatives, setParsedDataDerivatives] = useState(null);
-
-  const handleFileChangeUserDetails = (e) => {
-    setFileUserDetails(e.target.files[0]);
+  const handleFileChange = (event) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setSelectedFile(event.target.files[0]);
+    }
   };
 
-  const handleFileChangeCash = (e) => {
-    setFileCash(e.target.files[0]);
+  const onChooseFile = () => {
+    inputRef.current.click();
   };
 
-  const handleFileChangeDerivatives = (e) => {
-    setFileDerivatives(e.target.files[0]);
+  const clearFileInput = () => {
+    inputRef.current.value = "";
+    setSelectedFile(null);
+    setProgress(0);
+    setUploadStatus("select");
   };
 
-  const handleFileParse = async (file, setParsedData, collectionName, docId) => {
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const data = new Uint8Array(e.target.result);
-        const workbook = XLSX.read(data, { type: 'array' });
-        const firstSheetName = workbook.SheetNames[0];
-        const worksheet = workbook.Sheets[firstSheetName];
-        const csv = XLSX.utils.sheet_to_csv(worksheet);
+  const handleUpload = async () => {
+    if (uploadStatus === "done") {
+      clearFileInput();
+      return;
+    }
 
-        Papa.parse(csv, {
-          header: true,
-          complete: async (results) => {
-            const data = results.data.map(row => {
-              const newRow = {};
-              for (const key in row) {
-                if (row.hasOwnProperty(key)) {
-                  if (row[key].includes(',')) {
-                    newRow[key] = row[key].split(',').map(item => item.trim());
-                  } else {
-                    newRow[key] = row[key];
-                  }
-                }
-              }
-              return newRow;
-            });
+    try {
+      setUploadStatus("uploading");
 
-            setParsedData(data);
+      const formData = new FormData();
+      formData.append("file", selectedFile);
 
-            
-
-            // Call the Firebase context function to update Firestore
-            await updateFirestoreData("fgUWLhFemXhJV0e1WdXlObRqEGq1", data);
+      const response = await axios.post(
+        "http://localhost:8000/api/upload",
+        formData,
+        {
+          onUploadProgress: (progressEvent) => {
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            setProgress(percentCompleted);
           },
-        });
-      };
-      reader.readAsArrayBuffer(file);
-    } else {
-      alert('Please upload a file first.');
+        }
+      );
+
+      setUploadStatus("done");
+    } catch (error) {
+      setUploadStatus("select");
     }
   };
 
   return (
-    <>
-      <div className="flex flex-col items-center justify-center min-h-screen mt-7 bg-gray-100 p-4">
-        {/* User Details Section */}
-        <h1 className="text-2xl font-bold mb-4">User Details</h1>
-        <input
-          type="file"
-          accept=".xlsx, .xls"
-          onChange={handleFileChangeUserDetails}
-          className="mb-4 p-2 border border-gray-300"
-        />
-        <button
-          onClick={() => handleFileParse(fileUserDetails, setParsedDataUserDetails, 'users', 'userId')}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-        >
-          Parse File
-        </button>
-        {parsedDataUserDetails && (
-          <div className="mt-6 w-full max-w-4xl bg-white p-4 border border-gray-300 rounded shadow-sm overflow-x-auto">
-            <pre className="text-sm text-gray-700">
-              {JSON.stringify(parsedDataUserDetails, null, 2)}
-            </pre>
-          </div>
-        )}
-      </div>
+    <div>
+      <input
+        ref={inputRef}
+        type="file"
+        onChange={handleFileChange}
+        style={{ display: "none" }}
+      />
 
-      <div className="flex flex-col items-center justify-center min-h-screen mt-7 bg-gray-100 p-4">
-        {/* Cash Section */}
-        <h1 className="text-2xl font-bold mb-4">Cash</h1>
-        <input
-          type="file"
-          accept=".xlsx, .xls"
-          onChange={handleFileChangeCash}
-          className="mb-4 p-2 border border-gray-300"
-        />
-        <button
-          onClick={() => handleFileParse(fileCash, setParsedDataCash, 'cash', 'cashId')}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-        >
-          Parse File
+      {/* Button to trigger the file input dialog */}
+      {!selectedFile && (
+        <button className="file-btn" onClick={onChooseFile}>
+          <span className="material-symbols-outlined">upload</span> Upload File
         </button>
-        {parsedDataCash && (
-          <div className="mt-6 w-full max-w-4xl bg-white p-4 border border-gray-300 rounded shadow-sm overflow-x-auto">
-            <pre className="text-sm text-gray-700">
-              {JSON.stringify(parsedDataCash, null, 2)}
-            </pre>
-          </div>
-        )}
-      </div>
+      )}
 
-      <div className="flex flex-col items-center justify-center min-h-screen mt-7 bg-gray-100 p-4">
-        {/* Derivatives Section */}
-        <h1 className="text-2xl font-bold mb-4">Derivatives</h1>
-        <input
-          type="file"
-          accept=".xlsx, .xls"
-          onChange={handleFileChangeDerivatives}
-          className="mb-4 p-2 border border-gray-300"
-        />
-        <button
-          onClick={() => handleFileParse(fileDerivatives, setParsedDataDerivatives, 'derivatives', 'derivativeId')}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-        >
-          Parse File
-        </button>
-        {parsedDataDerivatives && (
-          <div className="mt-6 w-full max-w-4xl bg-white p-4 border border-gray-300 rounded shadow-sm overflow-x-auto">
-            <pre className="text-sm text-gray-700">
-              {JSON.stringify(parsedDataDerivatives, null, 2)}
-            </pre>
+      {selectedFile && (
+        <>
+          <div className="file-card">
+            <span className="material-symbols-outlined icon">description</span>
+
+            <div className="file-info">
+              <div style={{ flex: 1 }}>
+                <h6>{selectedFile?.name}</h6>
+
+                <div className="progress-bg">
+                  <div className="progress" style={{ width: `${progress}%` }} />
+                </div>
+              </div>
+
+              {uploadStatus === "select" ? (
+                <button onClick={clearFileInput}>
+                  <span class="material-symbols-outlined close-icon">
+                    close
+                  </span>
+                </button>
+              ) : (
+                <div className="check-circle">
+                  {uploadStatus === "uploading" ? (
+                    `${progress}%`
+                  ) : uploadStatus === "done" ? (
+                    <span
+                      class="material-symbols-outlined"
+                      style={{ fontSize: "20px" }}
+                    >
+                      check
+                    </span>
+                  ) : null}
+                </div>
+              )}
+            </div>
           </div>
-        )}
-      </div>
-    </>
+          <button className="upload-btn" onClick={handleUpload}>
+            {uploadStatus === "select" || uploadStatus === 'uploading' ? "Upload" : "Done"}
+          </button>
+        </>
+      )}
+    </div>
   );
 };
+
+export default FileUpload;

@@ -31,6 +31,7 @@
     "react-toastify": "^10.0.5",
     "remixicon": "^4.2.0",
     "sass": "^1.77.2",
+    "styled-component": "^2.8.0",
     "sweetalert2": "^11.11.0"
   },
   "devDependencies": {

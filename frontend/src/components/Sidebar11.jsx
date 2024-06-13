@@ -10,13 +10,16 @@ import { PiMoneyWavyBold } from "react-icons/pi";
 import { BiCandles } from "react-icons/bi";
 import { createElement } from "react";
 import { useFirebase } from '../context/Firebase';
+
 const Sidebar = () => {
   const [open, setOpen] = useState(true);
   const navigate = useNavigate();
-  const firebase =  useFirebase();
-  const handleHome = () =>{
+  const firebase = useFirebase();
+
+  const handleHome = () => {
     navigate("/");
-  }
+  };
+
   const handleSignOut = async () => {
     try {
       await firebase.signOutUser();
@@ -25,19 +28,20 @@ const Sidebar = () => {
       console.error('Error signing out:', error);
     }
   };
+
   const menus = [
-    { name: "dashboard", link: "userdash", icon: MdOutlineDashboard },
-    { name: "cash", link: "cash", icon: PiMoneyWavyBold },
-    { name: "derivative", link: "derivative", icon: BiCandles },
-    { name: "upload", link: "upload", icon: BiCandles },
+    { name: "Dashboard", link: "userdash", icon: MdOutlineDashboard },
+    { name: "Cash", link: "cash", icon: PiMoneyWavyBold },
+    { name: "Derivative", link: "derivative", icon: BiCandles },
+    { name: "Upload", link: "upload", icon: BiCandles },
   ];
 
   return (
     <section className="flex flex-col h-screen md:flex-row">
       <div
-        className={`bg-[#0e0e0e] min-h-screen ${
-          open ? "w-72" : "w-16"
-        } duration-500 text-gray-100 px-4 fixed md:relative z-20 md:z-0`}
+        className={`bg-slate-900 min-h-screen ${
+          open ? "w-45" : "w-16"
+        } duration-500 text-gray-100 px-4 fixed md:relative z-20 md:z-0 rounded-[20px] m-4 shadow-xl`}
       >
         <div className="py-3 flex justify-end">
           <HiMenuAlt3
@@ -82,7 +86,7 @@ const Sidebar = () => {
               onClick={handleHome}
               className="group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md text-gray-100"
             >
-              <div><GoHome className="text-[20px]"/></div>
+              <div><GoHome className="text-[20px]" /></div>
               <h2
                 className={`whitespace-pre duration-500 ${
                   !open && "opacity-0 translate-x-28 overflow-hidden"
@@ -94,7 +98,7 @@ const Sidebar = () => {
                 className={`${
                   open && "hidden"
                 } absolute left-48 bg-white font-semibold whitespace-pre text-gray-900 rounded-md drop-shadow-lg px-0 py-0 w-0 overflow-hidden group-hover:px-2 group-hover:py-1 group-hover:left-14 group-hover:duration-300 group-hover:w-fit`}
-                 // Ensure the tooltip has a higher z-index
+                style={{ zIndex: 50 }} // Ensure the tooltip has a higher z-index
               >
                 Back to Home
               </h2>
@@ -103,7 +107,7 @@ const Sidebar = () => {
               onClick={handleSignOut}
               className="group flex items-center text-sm gap-3.5 font-medium p-2 hover:bg-gray-800 rounded-md text-gray-100"
             >
-              <div><PiSignOutBold className="text-[20px]"/></div>
+              <div><PiSignOutBold className="text-[20px]" /></div>
               <h2
                 className={`whitespace-pre duration-500 ${
                   !open && "opacity-0 translate-x-28 overflow-hidden"

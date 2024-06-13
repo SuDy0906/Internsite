@@ -6,7 +6,9 @@ import Navbar from "./DashNav";
 import { db, auth } from "../context/Firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
-import { Upload } from "./Upload";
+import Upload  from "./Upload1";
+import CashData from "./CashData";
+import DerivativeData from "./DerivativeData";
 
 const Dashboard = () => {
   const [userDetails, setUserDetails] = useState(null);
@@ -39,15 +41,15 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden">
-      <Sidebar className="z-50" />
+    <div className="flex h-screen overflow-hidden bg-blue-50">
+      <Sidebar className="z-50 " />
       <div className="flex-grow flex flex-col overflow-y-auto px-4">
         <Navbar name={userDetails["name"]} className="px-6 py-6" />
         <div className="flex-grow  py-6">
           <Routes>
             <Route path="/userdash" element={<UserDash />} />
-            <Route path="/cash" element={<div>User Page</div>} />
-            <Route path="/derivative" element={<div>Messages Page</div>} />
+            <Route path="/cash" element={<CashData/>} />
+            <Route path="/derivative" element={<DerivativeData/>} />
             <Route path="/upload" element={<Upload />} />
           </Routes>
         </div>

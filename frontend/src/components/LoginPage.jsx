@@ -16,7 +16,7 @@ const LoginPage = () => {
   useEffect(() => {
     if (firebase.isLoggedIn) {
       console.log("logged", firebase.isLoggedIn)
-      navigate('/ll');
+      navigate('/dashboard/userdash');
     }
   }, [firebase, navigate]);
 

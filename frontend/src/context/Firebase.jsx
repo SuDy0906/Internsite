@@ -1,9 +1,8 @@
-// src/context/FirebaseContext.js
-
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import { getFirestore, setDoc, doc, updateDoc, getDoc } from "firebase/firestore"; // Import setDoc and doc
+import * as XLSX from 'xlsx';
 
 const firebaseConfig = {
     apiKey: "AIzaSyCQE15q8hOXLxg4gJlsKw1_sJmwKPV0smI",
@@ -26,37 +25,45 @@ export const FirebaseProvider = (props) => {
     const signUpWithEmailPassword = async (email, password, name) => {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
-        // Add user data to Firestore
         await setDoc(doc(db, "users", user.uid), {
             name: name,
             email: email,
-            netProfit: "0",
+            netProfit: 0,
             startDate: "0",
-            totalContribution: "0",
+            totalContribution: 0,
             clientCode: "0",
+
             cash: {
-                cashName: ["0"],
-                currentProfit: ["0"],
-                entryPrice: ["0"],
-                currentPnl: ["0"],
+                name: ["0"],
+                currentPrice: [0],
+                entryPrice: [0],
+                currentPnl: [0],
+                quantity:[0],
+                dailyProfit: 0,
+                holding:["0"]
             },
             derivatives: {
-                derivativeName: ["0"],
-                quantity: ["0"],
-                pnl: ["0"],
+                name: ["0"],
+                currentPrice: [0],
+                entryPrice: [0],
+                currentPnl: [0],
+                quantity:[0],
+                dailyProfit: 0,
             },
             historyCash: {
-                hCashName: ["0"],
-                hCurrentProfit: ["0"],
-                hEntryPrice: ["0"],
-                hCurrentPnl: ["0"],
+                name: ["0"],
+                currentPrice: [0],
+                entryPrice: [0],
+                currentPnl: [0],
+                quantity:[0],
             },
-            historyDerivative: {
-                hDerivativeName: ["0"],
-                hQuantity: ["0"],
-                hPnl: ["0"],
+            historyDerivatives: {
+                name: ["0"],
+                currentPrice: [0],
+                entryPrice: [0],
+                currentPnl: [0],
+                quantity:[0],
             },
-        
         });
         return userCredential;
     };
@@ -82,35 +89,137 @@ export const FirebaseProvider = (props) => {
         return signOut(auth);
     };
 
-    const updateFirestoreData = async (userId, parsedData) => {
-        try {
-          const userDocRef = doc(db, 'users', userId);
-      
-          // Convert the nested arrays into objects
-          const cashObj = {};
-          parsedData.cashName.forEach((item, index) => {
-            cashObj[index] = {
-              cashName: item,
-              currentProfit: parsedData.currentProfit[index],
-              entryPrice: parsedData.entryPrice[index],
-              currentPnl: parsedData.currentPnl[index],
+    const updateFirestoreData = async (file) => {
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, { type: 'array' });
+        const sheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[sheetName];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet);
+
+        const parseArray = (str) => {
+            try {
+                return JSON.parse(str);
+            } catch (e) {
+                console.error(`Error parsing array from string: ${str}`, e);
+                return [];
+            }
+        };
+
+        const convertedData = jsonData.map(item => {
+            const cash_name = parseArray(item.cash_name);
+            const cash_currentPrice = parseArray(item.cash_currentPrice);
+            const cash_entryPrice = parseArray(item.cash_entryPrice);
+            const cash_quantity = parseArray(item.cash_quantity);
+            const cash_holding = parseArray(item.cash_holding);
+            const cash_currentPnl = cash_currentPrice.map((price, index) =>
+                (price - cash_entryPrice[index]) * cash_quantity[index]
+            );
+
+            const derivatives_name = parseArray(item.derivatives_name);
+            const derivatives_currentPrice = parseArray(item.derivatives_currentPrice);
+            const derivatives_entryPrice = parseArray(item.derivatives_entryPrice);
+            const derivatives_quantity = parseArray(item.derivatives_quantity);
+            const derivatives_currentPnl = derivatives_currentPrice.map((price, index) =>
+                (price - derivatives_entryPrice[index]) * derivatives_quantity[index]
+            );
+
+            return {
+                ...item,
+                cash_name,
+                cash_currentPrice,
+                cash_entryPrice,
+                cash_currentPnl,
+                cash_quantity,
+                cash_holding,
+                derivatives_name,
+                derivatives_currentPrice,
+                derivatives_entryPrice,
+                derivatives_currentPnl,
+                derivatives_quantity,
             };
-          });
-      
-          // Construct the data object to update, including the converted nested arrays
-          const dataToUpdate = {
-            cash: cashObj,
-            // Add more fields or nested arrays as needed
-          };
-      
-          // Update the document using setDoc with merge: true to only update specified fields
-          await setDoc(userDocRef, dataToUpdate, { merge: true });
-      
-          console.log('Firestore data updated successfully!');
-        } catch (error) {
-          console.error('Error updating Firestore:', error);
-        }
-      };
+        });
+
+        const updatePromises = convertedData.map(async (item) => {
+            const userId = item["UserId"];
+            const userDocRef = doc(db, 'users', userId);
+            const userDoc = await getDoc(userDocRef);
+            const existingData = userDoc.data();
+
+            let newCashData = { name: [], currentPrice: [], entryPrice: [], currentPnl: [], quantity: [], holding: [] };
+            let closedCashData = { name: [], currentPrice: [], entryPrice: [], currentPnl: [], quantity: [] };
+            let cashDailyProfit = 0;
+
+            item.cash_name.forEach((_, index) => {
+                if (item.cash_holding[index] === "open") {
+                    newCashData.name.push(item.cash_name[index]);
+                    newCashData.currentPrice.push(item.cash_currentPrice[index]);
+                    newCashData.entryPrice.push(item.cash_entryPrice[index]);
+                    newCashData.currentPnl.push(item.cash_currentPnl[index]);
+                    newCashData.quantity.push(item.cash_quantity[index]);
+                    newCashData.holding.push(item.cash_holding[index]);
+                } else if (item.cash_holding[index] === "closed") {
+                    closedCashData.name.push(item.cash_name[index]);
+                    closedCashData.currentPrice.push(item.cash_currentPrice[index]);
+                    closedCashData.entryPrice.push(item.cash_entryPrice[index]);
+                    closedCashData.currentPnl.push(item.cash_currentPnl[index]);
+                    closedCashData.quantity.push(item.cash_quantity[index]);
+                }
+            });
+
+            cashDailyProfit = newCashData.currentPnl.reduce((sum, pnl) => sum + pnl, 0);
+            const cashClosedPnl = closedCashData.currentPnl.reduce((sum, pnl) => sum + pnl, 0);
+            const derivativesDailyProfit = item.derivatives_currentPnl.reduce((sum, pnl) => sum + pnl, 0);
+
+            const updatedData = {
+                totalContribution: item.totalContribution,
+                netProfit: existingData.netProfit + cashClosedPnl + derivativesDailyProfit,
+                startDate: item.startDate,
+                clientCode: item.clientCode,
+                cash: {
+                    name: newCashData.name,
+                    currentPrice: newCashData.currentPrice,
+                    entryPrice: newCashData.entryPrice,
+                    currentPnl: newCashData.currentPnl,
+                    quantity: newCashData.quantity,
+                    holding: newCashData.holding,
+                    dailyProfit: cashDailyProfit,
+                },
+                derivatives: {
+                    name: item.derivatives_name,
+                    currentPrice: item.derivatives_currentPrice,
+                    entryPrice: item.derivatives_entryPrice,
+                    currentPnl: item.derivatives_currentPnl,
+                    quantity: item.derivatives_quantity,
+                    dailyProfit: derivativesDailyProfit,
+                },
+                historyCash: {
+                    name: existingData.historyCash.name.concat(closedCashData.name),
+                    currentPrice: existingData.historyCash.currentPrice.concat(closedCashData.currentPrice),
+                    entryPrice: existingData.historyCash.entryPrice.concat(closedCashData.entryPrice),
+                    currentPnl: existingData.historyCash.currentPnl.concat(closedCashData.currentPnl),
+                    quantity: existingData.historyCash.quantity.concat(closedCashData.quantity),
+                },
+                historyDerivatives: {
+                    name: existingData.historyDerivatives.name.concat(existingData.derivatives.name),
+                    currentPrice: existingData.historyDerivatives.currentPrice.concat(existingData.derivatives.currentPrice),
+                    entryPrice: existingData.historyDerivatives.entryPrice.concat(existingData.derivatives.entryPrice),
+                    currentPnl: existingData.historyDerivatives.currentPnl.concat(existingData.derivatives.currentPnl),
+                    quantity: existingData.historyDerivatives.quantity.concat(existingData.derivatives.quantity),
+                }
+            };
+
+            await setDoc(userDocRef, updatedData, { merge: true });
+        });
+
+        await Promise.all(updatePromises);
+        console.log('Firestore updated successfully');
+    };
+    reader.readAsArrayBuffer(file);
+};
+
+
     return (
         <FirebaseContext.Provider value={{ signUpWithEmailPassword, logInWithEmailPassword, isLoggedIn, signOutUser, updateFirestoreData }}>
             {props.children}
